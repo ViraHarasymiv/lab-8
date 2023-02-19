@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="HardwareCartTests" verbose="1" parallel="tests" thread-count="2">
+    <test name="HardwareCartTest-chrome-itemCount=2">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="edu.IFNTUNG.bpbonline.tests.cartTests.hardwareCartTests.HardwareCartTests">
+            </class>
+        </classes>
+    </test>
+</suite>
