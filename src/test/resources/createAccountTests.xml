@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CreateNewAccountTests" verbose="1">
+    <test name="CreateNewAccountTest">
+        <classes>
+            <class name="edu.IFNTUNG.bpbonline.tests.CreateAccountTest">
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -12,7 +12,7 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 
-public class BPBOnlineTests {
+public class CartTests {
     private WebDriver driver;
 
     @Parameters({"browser"})
@@ -91,7 +91,7 @@ public class BPBOnlineTests {
     private void tearDown() {
         System.out.println("Close driver");
         // Close browser
-        if(driver != null){
+        if (driver != null) {
             driver.quit();
         }
     }
