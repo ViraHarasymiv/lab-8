@@ -1,7 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
 <suite name="HardwareCartTest" verbose="1" parallel="tests" thread-count="2">
-
     <test name="HardwareCartTest-chrome-itemCount=2">
         <parameter name="itemCount" value="2"></parameter>
         <parameter name="browser" value="chrome"></parameter>
@@ -10,7 +8,6 @@
             </class>
         </classes>
     </test>
-
     <test name="HardwareCartTest-chrome-itemCount=3">
         <parameter name="itemCount" value="3"></parameter>
         <parameter name="browser" value="chrome"></parameter>
