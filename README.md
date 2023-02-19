@@ -16,7 +16,7 @@ Automated tests:
 ```shell
 git clone https://github.com/ViraHarasymiv/labs
 ```
--Switch to the lab-8 branch:
+- Switch to the lab-8 branch:
 ```shell
 git checkout lab-8
 ```
