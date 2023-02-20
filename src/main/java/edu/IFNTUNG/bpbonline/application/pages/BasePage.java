@@ -104,5 +104,35 @@ public class BasePage {
         waitForVisibilityOfElement(locator);
         return find(locator).getText().replaceAll("[^0-9.]", "");
     }
+
+    /**
+     * Select the required data in the calendar
+     */
+    protected void selectDate(String date, By locator) {
+        waitForVisibilityOfElement(locator);
+        find(locator).sendKeys(date);
+        find(locator).sendKeys(Keys.RETURN);
+    }
+
+    /**
+     * Get text by using given locator
+     */
+    protected String getText(By locator, String text) {
+        waitForTextToBePresentInElement(locator, text);
+        return driver.findElement(locator).getText();
+    }
+    /**
+     * Get URL of current page from browser
+     */
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+    /**
+     * Wait for alert present and then switch to it
+     */
+    protected Alert switchToAlert() {
+        wait.until(ExpectedConditions.alertIsPresent());
+        return driver.switchTo().alert();
+    }
 }
 
