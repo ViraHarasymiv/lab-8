@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="All tests" verbose="1" parallel="tests" thread-count="2">
+<suite name="All tests" verbose="1">
     <test name="HardwareCartTest-chrome">
         <parameter name="browser" value="chrome"></parameter>
         <classes>
