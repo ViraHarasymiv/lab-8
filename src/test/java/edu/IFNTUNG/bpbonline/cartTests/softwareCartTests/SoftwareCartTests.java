@@ -1,4 +1,4 @@
-package edu.IFNTUNG.bpbonline.tests.cartTests.softwareCartTests;
+package edu.IFNTUNG.bpbonline.cartTests.softwareCartTests;
 
 import edu.IFNTUNG.bpbonline.application.pages.HomePage;
 import edu.IFNTUNG.bpbonline.application.pages.sections.product.Product;

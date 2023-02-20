@@ -5,35 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e30bb8f-56b5-4641-83a3-fbd8baf266ee" name="Changes" comment="RADNE changed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/locators/accountSuccesLocators/AccountSuccessLocators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/locators/createAccountPageLocators/CreateAccountPageLocators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/locators/headerLocators/HeaderLocators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/locators/loginPageLocators/LoginPageLocators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/AccountSuccessPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/CreateAccountPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/LoginPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/addressDetailsComponent/AddressDetailsComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/companyDetailsComponent/CompanyDetailsComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/contactInformationComponent/ContactInformationComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/createPasswordComponent/CreatePasswordComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/newCustomerComponent/NewCustomerComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/personalDetailsComponent/PersonalDetailsComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/StringUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/edu/IFNTUNG/bpbonline/createAccountTests/NegativeCreateAccountTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/edu/IFNTUNG/bpbonline/createAccountTests/PositiveCreateAccountTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/dataProviders/negativeCreateAccountTest.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/dataProviders/positiveCreateAccountTest.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/locators/productsPageLocators/ProductsPageLocators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/locators/productsPageLocators/ProductsPageLocators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/header/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/application/pages/sections/header/Header.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/asserts/Asserts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/IFNTUNG/bpbonline/asserts/Asserts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/application/locators/productsPageLocators/ProductsPageLocators.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/application/locators/productsPageLocators/ProductsPageLocators.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/application/pages/BasePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/application/pages/BasePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/application/pages/sections/header/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/application/pages/sections/header/Header.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/asserts/Asserts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/IFNTUNG/bpbonline/asserts/Asserts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/logs/appTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/logs/appTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/testSuites/hardwareCartTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/testSuites/hardwareCartTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/testSuites/softwareCartTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/testSuites/softwareCartTests.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +47,34 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Harasymiv\IdeaProjects\lab-8\src\test\resources" />
       <recent name="C:\Users\Harasymiv\IdeaProjects\lab-8\src\test\resources\testSuites" />
       <recent name="C:\Users\Harasymiv\IdeaProjects\lab-8\src\test\resources\dataProviders" />
       <recent name="C:\Users\Harasymiv\IdeaProjects\lab-8\src\test\resources.dataProviders" />
       <recent name="C:\Users\Harasymiv\IdeaProjects\lab-8\src\main\resources" />
-      <recent name="C:\Users\Harasymiv\IdeaProjects\lab-8\src\test\resources\dataProviders\hardwareCartTests" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.NegativeCreateAccountTest">
+  <component name="RunManager" selected="TestNG.C:/Users/Harasymiv/IdeaProjects/lab-8/src/test/resources/testSuites/hardwareCartTests.xml">
+    <configuration name="C:/Users/Harasymiv/IdeaProjects/lab-8/src/test/resources/all-tests.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="lab-8" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/all-tests.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Users/Harasymiv/IdeaProjects/lab-8/src/test/resources/testSuites/hardwareCartTests.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="lab-8" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/testSuites/hardwareCartTests.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NegativeCreateAccountTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="lab-8" />
       <extension name="coverage">
@@ -92,24 +86,6 @@
       <option name="PACKAGE_NAME" value="edu.IFNTUNG.bpbonline.createAccountTests" />
       <option name="MAIN_CLASS_NAME" value="edu.IFNTUNG.bpbonline.createAccountTests.NegativeCreateAccountTest" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PositiveCreateAccountTest.createNewAccountTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="lab-8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.IFNTUNG.bpbonline.createAccountTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.IFNTUNG.bpbonline.createAccountTests" />
-      <option name="MAIN_CLASS_NAME" value="edu.IFNTUNG.bpbonline.createAccountTests.PositiveCreateAccountTest" />
-      <option name="METHOD_NAME" value="createNewAccountTest" />
-      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -152,30 +128,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SoftwareCartTests" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="lab-8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.IFNTUNG.bpbonline.tests.cartTests.softwareCartTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.IFNTUNG.bpbonline.tests.cartTests.softwareCartTests" />
-      <option name="MAIN_CLASS_NAME" value="edu.IFNTUNG.bpbonline.tests.cartTests.softwareCartTests.SoftwareCartTests" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.C:/Users/Harasymiv/IdeaProjects/lab-8/src/test/resources/testSuites/hardwareCartTests.xml" />
+        <item itemvalue="TestNG.C:/Users/Harasymiv/IdeaProjects/lab-8/src/test/resources/all-tests.xml" />
         <item itemvalue="TestNG.NegativeCreateAccountTest" />
         <item itemvalue="TestNG.PositiveCreateAccountTest.positiveCreateAccountTest" />
         <item itemvalue="TestNG.PositiveCreateAccountTest.positiveCreateNewAccountTest" />
-        <item itemvalue="TestNG.PositiveCreateAccountTest.createNewAccountTest" />
-        <item itemvalue="TestNG.SoftwareCartTests" />
       </list>
     </recent_temporary>
   </component>
