@@ -2,11 +2,11 @@ package edu.IFNTUNG.bpbonline.application.pages;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class BasePage {
     private static final long TIME_TO_WAIT = 60;
@@ -18,108 +18,71 @@ public class BasePage {
         this.driver = driver;
         this.log = log;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_TO_WAIT));
+        PageFactory.initElements(driver,this);
     }
 
     /**
-     * Wait for given number of seconds for element with the given locator becomes visible
+     * Wait for given number of seconds for element becomes visible
      * on the page
      */
-    protected void waitForVisibilityOfElement(By locator) {
-        int attempts = 0;
-        while (attempts < 2) {
-            try {
-                wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-                break;
-            } catch (StaleElementReferenceException e) {
-            }
-            attempts++;
+    protected void waitForVisibilityOfElement(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    /**
+     * Wait for given number of seconds for the attribute value in the element
+     */
+    protected void waitForAttributeToBeInElement(WebElement element, String attribute, String value) {
+        wait.until(ExpectedConditions.attributeToBe(element,attribute,value));
         }
+
+    /**
+     * Wait for given number of seconds for the text becomes visible in the element
+     */
+    protected void waitForTextToBePresentInElement(WebElement element, String text) {
+        wait.until(ExpectedConditions.textToBePresentInElement(element,text));
     }
 
     /**
-     * Wait for given number of seconds for the attribute value in the element given by the locator
+     * Click on element when it's visible
      */
-    protected void waitForAttributeToBeInElement(By locator, String attribute, String value) {
-        int attempts = 0;
-        while (attempts < 2) {
-            try {
-                wait.until(ExpectedConditions.attributeToBe(locator,attribute,value));
-                break;
-            } catch (StaleElementReferenceException e) {
-            }
-            attempts++;
-        }
+    protected void click(WebElement element) {
+        waitForVisibilityOfElement(element);
+        element.click();
     }
 
     /**
-     * Wait for given number of seconds for the text becomes visible in the element given by the locator
+     * Type given text into element
      */
-    protected void waitForTextToBePresentInElement(By locator, String text) {
-        int attempts = 0;
-        while (attempts < 2) {
-            try {
-                wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
-                break;
-            } catch (StaleElementReferenceException e) {
-            }
-            attempts++;
-        }
-    }
-
-    /**
-     * Find element using given locator
-     */
-    protected WebElement find(By locator) {
-        return driver.findElement(locator);
-    }
-
-    /**
-     * Click on element with given locator when its visible
-     */
-    protected void click(By locator) {
-        waitForVisibilityOfElement(locator);
-        find(locator).click();
-    }
-
-    /**
-     * Type given text into element with given locator
-     */
-    protected void type(String text, By locator) {
-        waitForVisibilityOfElement(locator);
-        find(locator).clear();
-        find(locator).sendKeys(text);
-    }
-
-    /**
-     * Find all elements using the given locator
-     */
-    protected List<WebElement> findAll(By locator) {
-        return driver.findElements(locator);
+    protected void type(String text, WebElement element) {
+        waitForVisibilityOfElement(element);
+        element.clear();
+        element.sendKeys(text);
     }
 
     /**
      * Get the item's price
      */
-    protected String getItemPrice(By locator) {
-        waitForVisibilityOfElement(locator);
-        return find(locator).getText().replaceAll("[^0-9.]", "");
+    protected String getItemPrice(WebElement element) {
+        waitForVisibilityOfElement(element);
+        return element.getText().replaceAll("[^0-9.]", "");
     }
 
     /**
      * Select the required data in the calendar
      */
-    protected void selectDate(String date, By locator) {
-        waitForVisibilityOfElement(locator);
-        find(locator).sendKeys(date);
-        find(locator).sendKeys(Keys.RETURN);
+    protected void selectDate(String date, WebElement element) {
+        waitForVisibilityOfElement(element);
+        element.sendKeys(date);
+        element.sendKeys(Keys.RETURN);
     }
 
     /**
-     * Get text by using given locator
+     * Get the element's text
      */
-    protected String getText(By locator, String text) {
-        waitForTextToBePresentInElement(locator, text);
-        return driver.findElement(locator).getText();
+    protected String getText(WebElement element, String text) {
+        waitForTextToBePresentInElement(element, text);
+        return element.getText();
     }
     /**
      * Get URL of current page from browser
@@ -127,6 +90,7 @@ public class BasePage {
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
+
     /**
      * Wait for alert present and then switch to it
      */

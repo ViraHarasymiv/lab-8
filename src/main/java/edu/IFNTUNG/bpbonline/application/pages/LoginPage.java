@@ -1,24 +1,24 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
-import edu.IFNTUNG.bpbonline.application.pages.sections.header.Header;
-import edu.IFNTUNG.bpbonline.application.pages.sections.leftSideBar.LeftSideBar;
-import edu.IFNTUNG.bpbonline.application.pages.sections.newCustomerComponent.NewCustomerComponent;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage{
-    private Header header;
-    private LeftSideBar leftSideBar;
-    private NewCustomerComponent newCustomerComponent;
+public class LoginPage extends BasePage {
+
+    @FindBy(xpath = "//span[contains(text(), 'Continue')]")
+    private WebElement continueButton;
 
     public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
-        header = new Header(driver, log);
-        leftSideBar = new LeftSideBar(driver, log);
-        newCustomerComponent = new NewCustomerComponent(driver, log);
     }
 
-    public NewCustomerComponent getNewCustomerComponent() {
-        return newCustomerComponent;
+    /**
+     * Open Create Account Page by clicking on the Continue button
+     */
+    public CreateAccountPage clickOnContinueButton() {
+        click(continueButton);
+        return new CreateAccountPage(driver, log);
     }
 }

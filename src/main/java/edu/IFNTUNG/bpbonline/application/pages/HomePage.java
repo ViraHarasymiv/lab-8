@@ -1,25 +1,49 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
-import edu.IFNTUNG.bpbonline.application.pages.sections.header.Header;
-import edu.IFNTUNG.bpbonline.application.pages.sections.leftSideBar.LeftSideBar;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage{
-    private Header header;
-    private LeftSideBar leftSideBar;
+public class HomePage extends BasePage {
+
+    @FindBy(xpath = "//a[contains(text(), 'Hardware')]")
+    private WebElement hardwareMenu;
+
+    @FindBy(xpath = "//a[contains(text(), 'Software-')]")
+    private WebElement softwareMenu;
+
+    @FindBy(xpath = "//span[contains(text(), 'My Account')]")
+    private WebElement myAccountMenu;
 
     public HomePage(WebDriver driver, Logger log) {
         super(driver, log);
-        header = new Header(driver, log);
-        leftSideBar = new LeftSideBar(driver, log);
     }
 
-    public Header getHeader() {
-        return header;
+    /**
+     * Open LoginPage by clicking on the My Account Menu
+     */
+    public LoginPage clickOnMyAccountMenu() {
+        log.info("Clicking on the My Account Menu");
+        click(myAccountMenu);
+        return new LoginPage(driver, log);
     }
 
-    public LeftSideBar getLeftSideBar() {
-        return leftSideBar;
+    /**
+     * Click on the hardware menu
+     */
+    public ProductsPage clickOnHardwareMenu() {
+        log.info("Click on the Hardware menu");
+        click(hardwareMenu);
+        return new ProductsPage(driver, log);
+    }
+
+    /**
+     * Click on the software menu
+     */
+    public ProductsPage clickOnSoftwareMenu() {
+        log.info("Click on the Hardware menu");
+        click(softwareMenu);
+        return new ProductsPage(driver, log);
     }
 }
