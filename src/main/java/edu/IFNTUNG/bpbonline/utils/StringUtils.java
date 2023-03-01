@@ -1,4 +1,4 @@
-package utils;
+package edu.IFNTUNG.bpbonline.utils;
 
 import java.util.Random;
 

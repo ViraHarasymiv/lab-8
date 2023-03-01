@@ -1,24 +1,26 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
-import edu.IFNTUNG.bpbonline.application.pages.sections.header.Header;
-import edu.IFNTUNG.bpbonline.application.pages.sections.leftSideBar.LeftSideBar;
-import edu.IFNTUNG.bpbonline.application.pages.sections.newProducts.NewProducts;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class ProductsPage extends BasePage{
-    private NewProducts newProducts;
-    private Header header;
-    private LeftSideBar leftSideBar;
+
+    @FindBy(xpath = "//td[contains(text(), '$')]/a")
+    private List<WebElement> allNewProducts;
 
     public ProductsPage(WebDriver driver, Logger log) {
         super(driver, log);
-        newProducts = new NewProducts(driver, log);
-        header = new Header(driver, log);
-        leftSideBar = new LeftSideBar(driver, log);
     }
-
-    public NewProducts getNewProducts() {
-        return newProducts;
+    /**
+     * Click on the first new product's item
+     */
+    public ProductItemPage clickOnFirstProductItem(){
+        log.info("Click on the first new product's item");
+        allNewProducts.get(0).click();
+        return new ProductItemPage(driver,log);
     }
 }

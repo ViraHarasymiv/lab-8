@@ -1,4 +1,4 @@
-package utils;
+package edu.IFNTUNG.bpbonline.utils;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;

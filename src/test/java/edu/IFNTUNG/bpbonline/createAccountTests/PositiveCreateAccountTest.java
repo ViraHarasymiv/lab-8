@@ -5,8 +5,8 @@ import edu.IFNTUNG.bpbonline.application.pages.HomePage;
 import edu.IFNTUNG.bpbonline.asserts.Asserts;
 import edu.IFNTUNG.bpbonline.runners.BaseTest;
 import org.testng.annotations.Test;
-import utils.ConfigReader;
-import utils.CsvDataProviders;
+import edu.IFNTUNG.bpbonline.utils.ConfigReader;
+import edu.IFNTUNG.bpbonline.utils.CsvDataProviders;
 
 import java.util.Map;
 
@@ -37,11 +37,8 @@ public class PositiveCreateAccountTest extends BaseTest {
 
         log.info("Starting Create Account Test with valid data #" + number);
         AccountSuccessPage accountSuccessPage = new HomePage(driver, log)
-                .getHeader()
                 .clickOnMyAccountMenu()
-                .getNewCustomerComponent()
                 .clickOnContinueButton()
-                .getPersonalDetailsComponent()
                 .clickOnMaleRadioButton()
                 .enterUserFirstAndLastName(firstName,lastName)
                 .enterUserBirthDay(birthDay)

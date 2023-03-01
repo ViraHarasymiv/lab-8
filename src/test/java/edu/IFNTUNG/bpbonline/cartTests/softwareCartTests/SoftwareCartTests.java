@@ -1,11 +1,11 @@
 package edu.IFNTUNG.bpbonline.cartTests.softwareCartTests;
 
 import edu.IFNTUNG.bpbonline.application.pages.HomePage;
-import edu.IFNTUNG.bpbonline.application.pages.sections.product.Product;
+import edu.IFNTUNG.bpbonline.application.pages.ProductItemPage;
 import edu.IFNTUNG.bpbonline.asserts.Asserts;
 import edu.IFNTUNG.bpbonline.runners.BaseTest;
 import org.testng.annotations.Test;
-import utils.CsvDataProviders;
+import edu.IFNTUNG.bpbonline.utils.CsvDataProviders;
 
 import java.util.Map;
 
@@ -23,17 +23,11 @@ public class SoftwareCartTests extends BaseTest {
         String itemCount = testData.get("itemCount");
         log.info("Hardware Cart Tests #" + number);
         String itemPrice = new HomePage(driver,log)
-                .getLeftSideBar()
-                .getCategories()
                 .clickOnSoftwareMenu()
-                .getNewProducts()
-                .getProductNewItem()
                 .clickOnFirstProductItem()
-                .getProduct()
                 .getProductPrice();
-        String actualTotalPrice = new Product(driver,log)
+        String actualTotalPrice = new ProductItemPage(driver,log)
                 .clickOnAddToCartButton()
-                .getCartItem()
                 .typeItemsQuantity(itemCount)
                 .clickOnUpdateButton(itemCount)
                 .getTotalPriceInCart();
