@@ -1,6 +1,5 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,13 +10,10 @@ import java.time.Duration;
 public class BasePage {
     private static final long TIME_TO_WAIT = 60;
     protected WebDriver driver;
-    protected Logger log;
     protected WebDriverWait wait;
 
-    public BasePage(WebDriver driver, Logger log) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.log = log;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_TO_WAIT));
         PageFactory.initElements(driver,this);
     }
 
@@ -26,21 +22,23 @@ public class BasePage {
      * on the page
      */
     protected void waitForVisibilityOfElement(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(driver, Duration.ofSeconds(TIME_TO_WAIT)).until(ExpectedConditions.visibilityOf(element));
     }
 
     /**
      * Wait for given number of seconds for the attribute value in the element
      */
     protected void waitForAttributeToBeInElement(WebElement element, String attribute, String value) {
-        wait.until(ExpectedConditions.attributeToBe(element,attribute,value));
+        new WebDriverWait(driver, Duration.ofSeconds(TIME_TO_WAIT))
+                .until(ExpectedConditions.attributeToBe(element,attribute,value));
         }
 
     /**
      * Wait for given number of seconds for the text becomes visible in the element
      */
     protected void waitForTextToBePresentInElement(WebElement element, String text) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element,text));
+        new WebDriverWait(driver, Duration.ofSeconds(TIME_TO_WAIT))
+                .until(ExpectedConditions.textToBePresentInElement(element,text));
     }
 
     /**
@@ -80,8 +78,7 @@ public class BasePage {
     /**
      * Get the element's text
      */
-    protected String getText(WebElement element, String text) {
-        waitForTextToBePresentInElement(element, text);
+    protected String getText(WebElement element) {
         return element.getText();
     }
     /**
@@ -95,7 +92,7 @@ public class BasePage {
      * Wait for alert present and then switch to it
      */
     protected Alert switchToAlert() {
-        wait.until(ExpectedConditions.alertIsPresent());
+        new WebDriverWait(driver, Duration.ofSeconds(TIME_TO_WAIT)).until(ExpectedConditions.alertIsPresent());
         return driver.switchTo().alert();
     }
 }

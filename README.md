@@ -1,40 +1,84 @@
-# The example of the ninth lab. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# The example of the tenth lab. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
-The project is made by using Page Object Model and TestNG framework. Log4j is used for logging events. All logs are saved in the directory named logs (target/logs/appTest.log).
+==================================================================================
+    BDD Cucumber Selenium Webdriver Java Test Automation Framework
+==================================================================================
 
-- The "DataProvider" annotation is used in order to pass multiple parameters to our tests. Using DataProviders, we can easily pass multiple values to a test in just one execution cycle.
-- The "Parameter" annotation is used in order to select web-browser
+The framework incorporates design principle of BDD (Behaviour driven development) which promotes
+writing acceptance tests by describing behaviour of application under test in simple english language from
+the perspective of its stakeholders.
+Having test written in Natural language helps the Project Team to understand and track the requirements
 
-The target website is [BPBOnline](http://practice.bpbonline.com/index.php)
 
-Automated tests:
-1. Positive test for the creating new account
-2. Negative test for the creating new account
-3. Test for checking the hardware's item in the cart
-4. Test for checking the software's item in the cart
+Get the latest Source Code
+===========================
+Open Terminal or command line
+cd to the desired folder where the test automation source code needs to be checkout
 
-## Documentation:
-
-1. [MVN REPOSITORY](https://mvnrepository.com/);
-2. [WebDriverManager](https://bonigarcia.dev/webdrivermanager/).
-
+Run commands
 - Clone the repository:
 ```shell
 git clone https://github.com/ViraHarasymiv/labs
 ```
-- Switch to the lab-9 branch:
+- Switch to the lab-10 branch:
 ```shell
-git checkout lab-9
+git checkout lab-10
 ```
-- Execute [test-case #1](https://github.com/ViraHarasymiv/labs/issues/1):
-```shell
-mvn -Dtest=HardwareCartTests#checkItemPriceInCart test
-```
-- Execute [test-case #2](https://github.com/ViraHarasymiv/labs/issues/2):
-```shell
-mvn -Dtest=PositiveCreateAccountTest#positiveCreateAccountTest test
-```
-- Execute [test-case #3](https://github.com/ViraHarasymiv/labs/issues/3):
-```shell
-mvn -Dtest=SoftwareCartTests#checkItemPriceInCart test
-```
+
+IDE Configuration
+==================
+Intellij plugins
+----------------
+Configure and Install Following Plugins  
+File >> Setting >> Plugins >> Browser Repositories>
+
+*Cucumber for Java
+
+*Gherkin
+
+Report
+======
+
+Standard HTML Report  
+A report will be generated at /target/cucumber-report/report.html
+
+Getting Started
+===========================
+
+
+Feature Files
+-------------------------------------------------------------------
+These files contains the acceptance criteria which are written in Gherkin Language and contains various scenarios.
+
+File Extension:  *.feature    
+Location: "src/test/resources/cucumber.features"
+
+Step Definitions
+--------------------------------------------------------------------
+Every steps defined in Feature file needs to be implemented in Step Definitions Class
+
+Location: src/main/java/edu/IFNTUNG/bpbonline/application/stepdefinitions/DefinitionSteps.java
+
+Run Test Suite
+--------------------------------------------------------------------
+Test Suites are used to run a group of Tests which are tagged and represented in form of Feature files & Scenarios
+
+Location: src/test/java/edu/IFNTUNG/bpbonline/tests/RunCucumberTest.java
+
+
+    @CucumberOptions(features = "src/test/resources/cucumber.features", plugin = {
+        "pretty", "html:target/cucumber-report/report.html",},
+        glue = "edu/IFNTUNG/bpbonline/application/stepdefinitions")
+        public class RunCucumberTest extends AbstractTestNGCucumberTests{
+    }
+
+
+Where: 
+- features: represent the location of feature files from the compiled build   
+- plugin: html report is created. if a TesSuite is renamed then change the reporting directory name for both reports
+- glue: represent the location of steps' definitions
+
+
+
+  
+

@@ -9,11 +9,11 @@ Feature: Smoke
     When User clicks on the first item of the new products
     And User clicks on the Add to Cart button
     And User types the value of the item's count equals '<itemQuantity>'
-    And User clicks on the Update button
-    Then User checks that the item's price in the cart is equal to the '<itemQuantity>' multiplied by it's actual price
+    And User checks '<itemQuantity>' and clicks on the Update button
+    Then User checks that the item's price in the cart is equal to the '<totalPrice>'
 
     Examples:
-      | homePage                                | itemQuantity |
-      | http://practice.bpbonline.com/index.php | 2            |
-      | http://practice.bpbonline.com/index.php | 3            |
-      | http://practice.bpbonline.com/index.php | 4            |
+      | homePage                                | itemQuantity | totalPrice|
+      | http://practice.bpbonline.com/index.php | 2            | 139.98    |
+      | http://practice.bpbonline.com/index.php | 3            | 209.97    |
+      | http://practice.bpbonline.com/index.php | 4            | 279.96    |
