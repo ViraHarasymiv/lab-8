@@ -2,7 +2,6 @@
 
 ================================================================
 BDD Cucumber Selenium Webdriver Java Test Automation Framework
-================================================================
 
 The framework incorporates design principle of BDD (Behaviour driven development) which promotes
 writing acceptance tests by describing behaviour of application under test in simple english language from
