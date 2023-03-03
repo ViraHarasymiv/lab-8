@@ -1,7 +1,7 @@
 Feature: Smoke
   As a user
-  I want to test all main site functionality
-  So that I can be sure that site works correctly
+  I want to add products to the cart
+  So that I can change their quantity and see the total price
 
   Scenario Outline: Verify the price of the hardware's items in the cart
     Given User opens '<homePage>' page
