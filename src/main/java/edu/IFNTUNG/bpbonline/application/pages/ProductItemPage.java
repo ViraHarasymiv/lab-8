@@ -1,17 +1,13 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class ProductItemPage extends BasePage{
 
-    @FindBy(xpath = "//span[text()='Add to Cart']")
-    private WebElement addToCartButton;
-
-    @FindBy(xpath = "//form[@name='cart_quantity']//h1[contains(text(),'$')]")
-    private WebElement itemPrice;
+    private By addToCartButton = By.xpath("//span[text()='Add to Cart']");
+    private By itemPrice = By.xpath("//form[@name='cart_quantity']//h1[contains(text(),'$')]");
 
     public ProductItemPage(WebDriver driver, Logger log) {
         super(driver, log);

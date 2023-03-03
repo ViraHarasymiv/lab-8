@@ -2,61 +2,29 @@ package edu.IFNTUNG.bpbonline.application.pages;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import edu.IFNTUNG.bpbonline.utils.StringUtils;
 
 public class CreateAccountPage extends BasePage {
 
-    @FindBy(xpath = "//input[@value='m']")
-    private WebElement maleRadioButton;
-
-    @FindBy(xpath = "//input[@name='firstname']")
-    private WebElement firstNameField;
-
-    @FindBy(xpath = "//input[@name='lastname']")
-    private WebElement lastNameField;
-
-    @FindBy(xpath = "//input[@class='hasDatepicker']")
-    private WebElement dataPicker;
-
-    @FindBy(xpath = "//input[@name='email_address']")
-    private WebElement emailField;
-
-    @FindBy(xpath = "//input[@name='company']")
-    private WebElement companyNameField;
-
-    @FindBy(xpath = "//input[@name='street_address']")
-    private WebElement streetAddressField;
-
-    @FindBy(xpath = "//input[@name='postcode']")
-    private WebElement postCodeField;
-
-    @FindBy(xpath = "//input[@name='city']")
-    private WebElement cityField;
-
-    @FindBy(xpath = "//input[@name='state']")
-    private WebElement stateField;
-
-    @FindBy(xpath = "//select[@name='country']")
-    private WebElement selectCountryMenu;
-
-    @FindBy(xpath = "//input[@name='telephone']")
-    private WebElement telephoneNumberField;
-
-    @FindBy(xpath = "//input[@name='newsletter']")
-    private WebElement newsletterCheckbox;
-
-    @FindBy(xpath = "//input[@name='password']")
-    private WebElement passwordField;
-
-    @FindBy(xpath = "//input[@name='confirmation']")
-    private WebElement passwordConfirmationField;
-
-    @FindBy(xpath = "//span[contains(text(), 'Continue')]")
-    private WebElement submitButton;
+    private By maleRadioButton = By.xpath("//input[@value='m']");
+    private By firstNameField = By.xpath("//input[@name='firstname']");
+    private By lastNameField = By.xpath("//input[@name='lastname']");
+    private By dataPicker = By.xpath("//input[@class='hasDatepicker']");
+    private By emailField = By.xpath("//input[@name='email_address']");
+    private By companyNameField = By.xpath("//input[@name='company']");
+    private By streetAddressField = By.xpath("//input[@name='street_address']");
+    private By postCodeField = By.xpath("//input[@name='postcode']");
+    private By cityField = By.xpath("//input[@name='city']");
+    private By stateField = By.xpath("//input[@name='state']");
+    private By selectCountryMenu = By.xpath("//select[@name='country']");
+    private By telephoneNumberField = By.xpath("//input[@name='telephone']");
+    private By newsletterCheckbox = By.xpath("//input[@name='newsletter']");
+    private By passwordField = By.xpath("//input[@name='password']");
+    private By passwordConfirmationField = By.xpath("//input[@name='confirmation']");
+    private By submitButton = By.xpath("//span[contains(text(), 'Continue')]");
 
     public CreateAccountPage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -136,7 +104,7 @@ public class CreateAccountPage extends BasePage {
      * Select the user's country
      */
     public CreateAccountPage selectCountry(String country) {
-        Select select = new Select(selectCountryMenu);
+        Select select = new Select(find(selectCountryMenu));
         select.selectByVisibleText(country);
         return this;
     }

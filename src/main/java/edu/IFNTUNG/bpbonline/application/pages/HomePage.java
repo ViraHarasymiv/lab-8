@@ -1,20 +1,14 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
 
-    @FindBy(xpath = "//a[contains(text(), 'Hardware')]")
-    private WebElement hardwareMenu;
-
-    @FindBy(xpath = "//a[contains(text(), 'Software-')]")
-    private WebElement softwareMenu;
-
-    @FindBy(xpath = "//span[contains(text(), 'My Account')]")
-    private WebElement myAccountMenu;
+    private By hardwareMenu = By.xpath("//a[contains(text(), 'Hardware')]");
+    private By softwareMenu = By.xpath("//a[contains(text(), 'Software-')]");
+    private By myAccountMenu = By.xpath("//span[contains(text(), 'My Account')]");
 
     public HomePage(WebDriver driver, Logger log) {
         super(driver, log);

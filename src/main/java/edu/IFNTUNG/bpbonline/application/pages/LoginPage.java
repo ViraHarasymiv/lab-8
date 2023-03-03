@@ -1,14 +1,11 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
-
-    @FindBy(xpath = "//span[contains(text(), 'Continue')]")
-    private WebElement continueButton;
+    private By continueButton = By.xpath("//span[contains(text(), 'Continue')]");
 
     public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
