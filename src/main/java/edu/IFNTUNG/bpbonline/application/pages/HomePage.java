@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,40 +16,34 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[contains(text(), 'My Account')]")
     private WebElement myAccountMenu;
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
-    /**
-     * Open LoginPage by clicking on the My Account Menu
-     */
-
-    public HomePage openHomePge(String url) {
-        driver.get(url);
-        return this;
+    public HomePage(WebDriver driver, Logger log) {
+        super(driver, log);
     }
 
     /**
      * Open LoginPage by clicking on the My Account Menu
      */
     public LoginPage clickOnMyAccountMenu() {
+        log.info("Clicking on the My Account Menu");
         click(myAccountMenu);
-        return new LoginPage(driver);
+        return new LoginPage(driver,log);
     }
 
     /**
      * Click on the hardware menu
      */
     public ProductsPage clickOnHardwareMenu() {
+        log.info("Click on the Hardware menu");
         click(hardwareMenu);
-        return new ProductsPage(driver);
+        return new ProductsPage(driver,log);
     }
 
     /**
      * Click on the software menu
      */
     public ProductsPage clickOnSoftwareMenu() {
+        log.info("Click on the Hardware menu");
         click(softwareMenu);
-        return new ProductsPage(driver);
+        return new ProductsPage(driver,log);
     }
 }

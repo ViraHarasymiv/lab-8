@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,8 +10,8 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(), 'Continue')]")
     private WebElement continueButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, Logger log) {
+        super(driver, log);
     }
 
     /**
@@ -18,6 +19,6 @@ public class LoginPage extends BasePage {
      */
     public CreateAccountPage clickOnContinueButton() {
         click(continueButton);
-        return new CreateAccountPage(driver);
+        return new CreateAccountPage(driver,log);
     }
 }

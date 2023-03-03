@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -57,14 +58,15 @@ public class CreateAccountPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(), 'Continue')]")
     private WebElement submitButton;
 
-    public CreateAccountPage(WebDriver driver) {
-        super(driver);
+    public CreateAccountPage(WebDriver driver, Logger log) {
+        super(driver, log);
     }
 
     /**
      * Click on the Male radio button
      */
     public CreateAccountPage clickOnMaleRadioButton() {
+        log.info("Click on the Male radio button");
         click(maleRadioButton);
         return this;
     }
@@ -73,6 +75,7 @@ public class CreateAccountPage extends BasePage {
      * Type the user's First and Last Name
      */
     public CreateAccountPage enterUserFirstAndLastName(String firstUserName, String lastName) {
+        log.info("enter the user's First and Last Name");
         type(firstUserName, firstNameField);
         type(lastName, lastNameField);
         return this;
@@ -100,7 +103,7 @@ public class CreateAccountPage extends BasePage {
      */
     public AccountSuccessPage submitEnteredInformationWithValidData() {
         click(submitButton);
-        return new AccountSuccessPage(driver);
+        return new AccountSuccessPage(driver,log);
     }
 
     /**
@@ -177,6 +180,7 @@ public class CreateAccountPage extends BasePage {
     public String getAlertText() {
         Alert alert = switchToAlert();
         String alertText = alert.getText();
+        log.info("Alert says: " + alertText);
         return alertText;
     }
 }
