@@ -13,7 +13,6 @@ import edu.IFNTUNG.bpbonline.utils.ConfigReader;
 import java.lang.reflect.Method;
 
 public class BaseTest {
-    private final String PAGE_URL = ConfigReader.get().getHomePageUrl();
     protected WebDriver driver;
     protected Logger log;
 
@@ -28,7 +27,6 @@ public class BaseTest {
         log = LogManager.getLogger(testName);
         BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
         driver = factory.createDriver();
-        driver.get(PAGE_URL);
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         this.testSuiteName = ctx.getSuite().getName();

@@ -1,5 +1,7 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +25,16 @@ public class HomePage extends BasePage {
     /**
      * Open LoginPage by clicking on the My Account Menu
      */
+    @Given("User opens {string} page")
+    public HomePage openHomePge(final String url) {
+        log.info("Open HomePage");
+        driver.get(url);
+        return this;
+    }
+
+    /**
+     * Open LoginPage by clicking on the My Account Menu
+     */
     public LoginPage clickOnMyAccountMenu() {
         log.info("Clicking on the My Account Menu");
         click(myAccountMenu);
@@ -32,6 +44,7 @@ public class HomePage extends BasePage {
     /**
      * Click on the hardware menu
      */
+    @And("User clicks on the Categories Hardware's menu of the left sidebar")
     public ProductsPage clickOnHardwareMenu() {
         log.info("Click on the Hardware menu");
         click(hardwareMenu);

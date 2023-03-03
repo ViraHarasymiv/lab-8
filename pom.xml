@@ -15,6 +15,7 @@
         <testng>7.7.1</testng>
         <webdrivermanager>5.3.2</webdrivermanager>
         <log4j>2.19.0</log4j>
+        <cucumber>7.9.0</cucumber>
         <opencsv>5.7.1</opencsv>
         <commons-io>2.11.0</commons-io>
     </properties>
@@ -47,6 +48,18 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber}</version>
         </dependency>
 
         <dependency>

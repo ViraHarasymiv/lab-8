@@ -1,13 +1,23 @@
 package edu.IFNTUNG.bpbonline.asserts;
 
+import edu.IFNTUNG.bpbonline.application.pages.CartPage;
+import edu.IFNTUNG.bpbonline.application.pages.ProductItemPage;
+import io.cucumber.java.en.Then;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 public class Asserts {
+    WebDriver driver;
+    Logger log;
 
-    public static void checkPriceInCart(String actualItemsTotalPrice, String expectedItemsPrice, String itemCount){
+    @Then("User checks that the item's price in the cart is equal to the {string} multiplied by it's actual price")
+    public void checkPriceInCart(String itemQuantity) {
+        String expectedItemsPrice = new ProductItemPage(driver,log).getProductPrice();
+        String actualItemsTotalPrice = new CartPage(driver, log).getTotalPriceInCart();
         float actualPrice = Float.parseFloat(actualItemsTotalPrice);
-        float expectedPrice = Float.parseFloat(expectedItemsPrice) * Float.parseFloat(itemCount);
+        float expectedPrice = Float.parseFloat(expectedItemsPrice) * Float.parseFloat(itemQuantity);
         //Check actual and expected prices
         Assert.assertEquals(actualPrice, expectedPrice, "Actual price is " + actualPrice
                 + ", but must be " + expectedPrice);
