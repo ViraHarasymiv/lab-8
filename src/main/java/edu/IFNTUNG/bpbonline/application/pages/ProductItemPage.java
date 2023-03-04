@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class ProductItemPage extends BasePage{
         return getItemPrice(itemPrice);
     }
 
+    @Step("Click on the Add to Cart button")
     public CartPage clickOnAddToCartButton(){
         log.info("Click on the Add to Cart button");
         click(addToCartButton);

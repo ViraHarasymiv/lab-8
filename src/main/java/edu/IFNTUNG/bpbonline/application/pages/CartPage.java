@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +25,7 @@ public class CartPage extends BasePage {
         return getItemPrice(cartTotalPrice);
     }
 
+    @Step("Click on the Update button")
     public CartPage clickOnUpdateButton(String itemQuantity) {
         waitForAttributeToBeInElement(cartItemQuantity, "value", itemQuantity);
         log.info("Click on the Update button");
@@ -31,6 +33,7 @@ public class CartPage extends BasePage {
         return this;
     }
 
+    @Step("Type the value of the item's count equals {itemQuantity}")
     public CartPage typeItemsQuantity(String itemQuantity) {
         log.info("Type item's quantity: " + itemQuantity);
         type(itemQuantity, cartItemQuantity);

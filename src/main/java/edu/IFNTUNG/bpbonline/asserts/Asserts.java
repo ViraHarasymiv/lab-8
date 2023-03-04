@@ -1,9 +1,12 @@
 package edu.IFNTUNG.bpbonline.asserts;
 
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 public class Asserts {
+
+    @Step("Verify the item's price in the cart")
     public static void checkPriceInCart(String actualItemsTotalPrice, String expectedItemsPrice, String itemCount){
         float actualPrice = Float.parseFloat(actualItemsTotalPrice);
         float expectedPrice = Float.parseFloat(expectedItemsPrice) * Float.parseFloat(itemCount);

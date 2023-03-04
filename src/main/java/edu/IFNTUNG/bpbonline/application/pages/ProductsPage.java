@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class ProductsPage extends BasePage{
      * Click on the first new product's item
      */
 
+    @Step("Click on the first item of the new products")
     public ProductItemPage clickOnFirstProductItem(){
         log.info("Click on the first new product's item");
         allNewProducts.get(0).click();

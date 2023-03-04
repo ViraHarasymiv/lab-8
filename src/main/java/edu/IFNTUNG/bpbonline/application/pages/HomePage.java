@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +33,7 @@ public class HomePage extends BasePage {
     /**
      * Click on the hardware menu
      */
+    @Step("Click on the Categories Hardware's menu of the left sidebar")
     public ProductsPage clickOnHardwareMenu() {
         log.info("Click on the Hardware menu");
         click(hardwareMenu);
