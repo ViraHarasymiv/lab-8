@@ -23,6 +23,7 @@ public class HardwareCartTests extends BaseTest {
 
     @Description("Verify the price of the hardware's items in the cart ")
     @Severity(SeverityLevel.MINOR)
+    @Issue(value = "1")
     @Test(dataProvider = "csvReader",dataProviderClass = CsvDataProviders.class)
     public void checkItemPriceInCart(Map<String,String> testData){
         String number = testData.get("number");
