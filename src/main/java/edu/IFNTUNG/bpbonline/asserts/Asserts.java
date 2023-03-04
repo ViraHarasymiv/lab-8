@@ -15,6 +15,7 @@ public class Asserts {
                 + ", but must be " + expectedPrice);
     }
 
+    @Step("Verify the message about successful registration")
     public static void checkMessageAboutSuccessfulRegistration(String actualMessage, String message,
                                                                String actualUrl, String expectedUrl){
         SoftAssert softAssert = new SoftAssert();
@@ -23,6 +24,7 @@ public class Asserts {
         softAssert.assertAll();
     }
 
+    @Step("Verify the error message")
     public static void checkErrorMessage(String actualMessage, String expectedMessage){
         Assert.assertTrue(actualMessage.trim().contains(expectedMessage),
                 "Actual message is "+ actualMessage + ", but must be " + expectedMessage);

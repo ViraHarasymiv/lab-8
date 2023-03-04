@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,7 @@ public class LoginPage extends BasePage {
     /**
      * Open Create Account Page by clicking on the Continue button
      */
+    @Step("Click on the Continue button")
     public CreateAccountPage clickOnContinueButton() {
         click(continueButton);
         return new CreateAccountPage(driver,log);

@@ -1,5 +1,6 @@
 package edu.IFNTUNG.bpbonline.application.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -65,6 +66,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Click on the Male radio button
      */
+    @Step("Check the Male radio button")
     public CreateAccountPage clickOnMaleRadioButton() {
         log.info("Click on the Male radio button");
         click(maleRadioButton);
@@ -74,6 +76,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's First and Last Name
      */
+    @Step("Type the first name in the First Name {firstUserName} field and the last name in the Last Name {lastName} field")
     public CreateAccountPage enterUserFirstAndLastName(String firstUserName, String lastName) {
         log.info("enter the user's First and Last Name");
         type(firstUserName, firstNameField);
@@ -84,6 +87,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's birthday
      */
+    @Step("Select the date of birth in the Date of Birth's {birthDay} dropdown list")
     public CreateAccountPage enterUserBirthDay(String birthDay) {
         selectDate(birthDay, dataPicker);
         return this;
@@ -92,6 +96,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's email
      */
+    @Step("Type e-mail address in the E-Mail Address field")
     public CreateAccountPage enterUserEmail(String fix_length) {
         String email = StringUtils.generateRandomEmail(Integer.parseInt(fix_length));
         type(email, emailField);
@@ -101,6 +106,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Submit entered user's information with valid data
      */
+    @Step("Click on the Continue button")
     public AccountSuccessPage submitEnteredInformationWithValidData() {
         click(submitButton);
         return new AccountSuccessPage(driver,log);
@@ -109,6 +115,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's company
      */
+    @Step("Type company name in the Company Name {company} field")
     public CreateAccountPage enterCompanyName(String company) {
         type(company, companyNameField);
         return this;
@@ -117,6 +124,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's street address and the post code
      */
+    @Step("Type street address {0} in the Street Address field and the post code {1} in the Post Code field")
     public CreateAccountPage enterStreetAddressAndPostCode(String streetAddress, String postCode) {
         type(streetAddress, streetAddressField);
         type(postCode, postCodeField);
@@ -126,6 +134,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's city and state
      */
+    @Step("Type city {0} in the City field and the state {1} in the State/Province field")
     public CreateAccountPage enterUserCityAndState(String city, String state) {
         type(city, cityField);
         type(state, stateField);
@@ -135,6 +144,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Select the user's country
      */
+    @Step("Select the country from the Country {0} dropdown list")
     public CreateAccountPage selectCountry(String country) {
         Select select = new Select(selectCountryMenu);
         select.selectByVisibleText(country);
@@ -144,6 +154,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Type the user's telephone number
      */
+    @Step("Type the telephone number {0} in the Telephone Number field")
     public CreateAccountPage enterTelephoneNumber(String telephoneNumber) {
         type(telephoneNumber, telephoneNumberField);
         return this;
@@ -152,6 +163,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Check the News Letter checkbox
      */
+    @Step("Check the Newsletter checkbox")
     public CreateAccountPage checkNewsLetterCheckBox() {
         click(newsletterCheckbox);
         return this;
@@ -160,6 +172,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Create and confirm new password
      */
+    @Step("Type the password {0} in the Password field and in the Confirmation field")
     public CreateAccountPage createPassword(String password) {
         type(password, passwordField);
         type(password, passwordConfirmationField);
@@ -169,6 +182,7 @@ public class CreateAccountPage extends BasePage {
     /**
      * Submit entered user's information with invalid data
      */
+    @Step("Click on the Continue button")
     public CreateAccountPage submitEnteredInformationWithInValidDate() {
         click(submitButton);
         return this;
