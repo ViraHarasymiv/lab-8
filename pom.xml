@@ -21,6 +21,7 @@
         <allure-version>2.17.3</allure-version>
         <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
         <test.file>all-tests</test.file>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <aspectj.version>1.9.9.1</aspectj.version>
     </properties>
 
@@ -76,6 +77,33 @@
 
     <build>
         <plugins>
+
+            <plugin>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>${maven-resources-plugin.version}</version>
+            <executions>
+                <execution>
+                    <id>copy-resources</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>target/allure-results</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>src/test/resources</directory>
+                                <includes>
+                                    <include>allure.properties</include>
+                                    <include>environment.properties</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -105,6 +133,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>

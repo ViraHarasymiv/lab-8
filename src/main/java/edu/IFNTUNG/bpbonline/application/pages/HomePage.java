@@ -24,6 +24,8 @@ public class HomePage extends BasePage {
     /**
      * Open LoginPage by clicking on the My Account Menu
      */
+
+    @Step("Click on the My Account button in the Home page")
     public LoginPage clickOnMyAccountMenu() {
         log.info("Clicking on the My Account Menu");
         click(myAccountMenu);
@@ -43,6 +45,7 @@ public class HomePage extends BasePage {
     /**
      * Click on the software menu
      */
+    @Step("Click on the Categories Software's menu of the left sidebar in the Home Page")
     public ProductsPage clickOnSoftwareMenu() {
         log.info("Click on the Hardware menu");
         click(softwareMenu);
