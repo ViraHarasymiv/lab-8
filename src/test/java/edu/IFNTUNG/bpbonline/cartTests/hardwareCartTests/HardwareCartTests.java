@@ -5,6 +5,7 @@ import edu.IFNTUNG.bpbonline.application.pages.ProductItemPage;
 import edu.IFNTUNG.bpbonline.asserts.Asserts;
 import edu.IFNTUNG.bpbonline.runners.BaseTest;
 import edu.IFNTUNG.bpbonline.utils.CsvDataProviders;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -15,7 +16,13 @@ import java.util.Map;
  *
  * @author Vira Harasymiv
  */
+
+@Epic("Cart test")
+@Story("Check price")
 public class HardwareCartTests extends BaseTest {
+
+    @Description("Verify the price of the hardware's items in the cart ")
+    @Severity(SeverityLevel.MINOR)
     @Test(dataProvider = "csvReader",dataProviderClass = CsvDataProviders.class)
     public void checkItemPriceInCart(Map<String,String> testData){
         String number = testData.get("number");
