@@ -89,7 +89,7 @@
                         <goal>copy-resources</goal>
                     </goals>
                     <configuration>
-                        <outputDirectory>target/allure-results</outputDirectory>
+                        <outputDirectory>allure-results</outputDirectory>
                         <resources>
                             <resource>
                                 <directory>src/test/resources</directory>
