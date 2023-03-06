@@ -3,6 +3,7 @@ Feature: Smoke
   I want to create a new account
   So that I can be logged in
 
+  @CreateAccountTest @PositiveTest
   Scenario Outline: Verify the new account's creating with valid data
     Given User opens '<homePage>' page
     And User clicks on the My Account button in the Home page
@@ -25,7 +26,7 @@ Feature: Smoke
       | homePage                                | userName             | userLastName        | birthDate  | emailLength | companyName       | streetAddress    | postCode | userCity  | userState  | userCountry | userTelephoneNumber | userPassword | successMessage                | accountSuccesPageUrl       |
       | http://practice.bpbonline.com/index.php | Test User First Name | Test User Last Name | 07/30/1988 |8            | Test User Company | Test User street | 12300    | User City | User state | Ukraine     | 380661234590        | 123456789    | Your Account Has Been Created | create_account_success.php |
 
-
+  @CreateAccountTest @NegativeTest
   Scenario Outline: Verify the new account's creating with invalid data
     Given User opens '<homePage>' page
     And User clicks on the My Account button in the Home page

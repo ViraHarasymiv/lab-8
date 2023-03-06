@@ -3,6 +3,7 @@ Feature: Smoke
   I want to add products to the cart
   So that I can change their quantity and see the total price
 
+  @checkItemPriceInCart
   Scenario Outline: Verify the price of the hardware's items in the cart
     Given User opens '<homePage>' page
     And User clicks on the Categories Hardware's menu of the left sidebar
