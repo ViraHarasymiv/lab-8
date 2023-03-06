@@ -1,6 +1,6 @@
 # The example of the tenth lab. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
-===========================================================================================
+=========================================================================
 
 ## BDD Cucumber Selenium Webdriver Java Test Automation Framework
 
