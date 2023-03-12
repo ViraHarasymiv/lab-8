@@ -16,6 +16,7 @@ public class RestClientFactory {
                 .given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
+                .log().all()
                 .accept(ContentType.JSON);
     }
 }
