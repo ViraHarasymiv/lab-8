@@ -14,6 +14,9 @@
         <selenium-java>4.8.0</selenium-java>
         <testng>7.7.1</testng>
         <webdrivermanager>5.3.2</webdrivermanager>
+        <log4j>2.19.0</log4j>
+        <opencsv>5.7.1</opencsv>
+        <commons-io>2.11.0</commons-io>
     </properties>
 
     <dependencies>
@@ -21,20 +24,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager}</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
