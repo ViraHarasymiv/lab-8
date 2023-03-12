@@ -1,4 +1,4 @@
-# The example of the ninth lab. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example for the lab 9. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 The project is made by using Page Object Model and TestNG framework. Log4j is used for logging events. All logs are saved in the directory named logs (target/logs/appTest.log).
 
