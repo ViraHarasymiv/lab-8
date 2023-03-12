@@ -29,15 +29,15 @@ mvn allure:serve
 mvn clean test -DsuiteXmlFile=${xml} -Dgroups=${} -Denv=${env}
 ```
 Examples:
-- Run the status group tests on prod environment:
+- Run the status group's tests on prod environment:
 ```shell
 mvn clean test -Dgroups=status -Denv=prod
 ```
-- Run the tools group tests:
+- Run the tools group's tests:
 ```shell
 mvn clean test -Dgroups=tools
 ```
-- Run the orders group tests:
+- Run the orders group's tests:
 ```shell
 mvn clean test -Dgroups=orders
 ```
