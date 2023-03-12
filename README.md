@@ -37,7 +37,7 @@ mvn clean test -Dgroups=status -Denv=prod
 ```shell
 mvn clean test -Dgroups=tools
 ```
-- Run the tools group tests:
+- Run the orders group tests:
 ```shell
 mvn clean test -Dgroups=orders
 ```
