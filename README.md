@@ -1,4 +1,4 @@
-# The example of the eighth lab. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example for the lab 8. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 The target website is [BPBOnline](http://practice.bpbonline.com/index.php)
 
