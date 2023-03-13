@@ -1,15 +1,24 @@
 package simpleToolRentalAPI;
 
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
+import simpleToolRentalAPI.utils.CsvDataProviders;
+import simpleToolRentalAPI.utils.GeneratorUtils;
+
+import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ToolRentalCrudTests {
     String baseUrl = "https://simple-tool-rental-api.glitch.me";
+    protected String authenticationToken = getAccessToken();
 
     @Test(groups = {"status"})
     public void checkStatus(){
@@ -23,6 +32,7 @@ public class ToolRentalCrudTests {
                 .get(endpoint)
                 .then()
                 .log().all()
+                .assertThat()
                 .statusCode(HttpStatus.SC_OK);
     }
 
@@ -44,4 +54,251 @@ public class ToolRentalCrudTests {
                 .isEqualTo("UP");
     }
 
+    @Test(groups = {"tools"})
+    public void checkGetAllTools(){
+        String endpoint = "/tools";
+        given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK);
+    }
+
+    @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
+    public void checkGetToolsByCategory(Map<String, String> testData) {
+        String endpoint = "/tools";
+                String category = testData.get("category");
+        Response response = given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .queryParam("category", category)
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().response();
+        Assertions.assertThat(response.body().jsonPath().getString("category")
+                .equals(category));
+    }
+
+    @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
+    public void positiveCheckResultsCount(Map<String, String> testData) {
+        int value = Integer.parseInt(testData.get("value"));
+        String endpoint = "/tools";
+        Response response = given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .queryParam("results",value)
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().response();
+        List<JsonPath> results = response.jsonPath().getList("category");
+        assertThat(results.size(), equalTo(value));
+    }
+
+    @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
+    public void negativeCheckResultsCount(Map<String, String> testData) {
+        int value = Integer.parseInt(testData.get("value"));
+        String endpoint = "/tools";
+        given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .queryParam("results",value)
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_BAD_REQUEST);
+    }
+
+    @Test(groups = {"tools"})
+    public void checkGettingSingleToolById(){
+        String endpoint = "/tools";
+        String tools_id = "/tools/{id}";
+        Response getAllTools = getAllToolsSuccessful();
+        List<Object> id = getAllTools.jsonPath().getList("id");
+        for(int i = 0; i < id.size(); i++) {
+            given()
+                    .baseUri(baseUrl)
+                    .contentType(ContentType.JSON)
+                    .log().all()
+                    .accept(ContentType.JSON)
+                    .pathParam("id", id.get(i))
+                    .get(tools_id)
+                    .then()
+                    .log().all()
+                    .assertThat()
+                    .statusCode(HttpStatus.SC_OK);
+        }
+    }
+
+    public Response getAllToolsSuccessful(){
+        String endpoint = "/tools";
+        return given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().response();
+    }
+
+    @Test(groups = {"orders"})
+    public void getOrderById(){
+        String endpoint = "/orders/{orderId}";
+        String newOrderId = getNewOrderId();
+        Response response = given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .auth()
+                .oauth2(authenticationToken)
+                .when()
+                .pathParam("orderId", newOrderId)
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().response();
+        String actualId = response.jsonPath().get("id");
+        Assertions.assertThat(newOrderId
+                .equals(actualId));
+
+    }
+
+    @Test(groups = {"orders"})
+    public void getAllOrders(){
+        String endpoint = "/orders";
+        given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .auth()
+                .oauth2(authenticationToken)
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK);
+
+    }
+
+    @Test(groups = {"orders"})
+    public void updateOrder() {
+        String endpoint = "/orders/{orderId}";
+        String newOrderId = getNewOrderId();
+        given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .auth()
+                .oauth2(authenticationToken)
+                .body("""
+                        {
+                         "customerName": "User"
+                        }
+                        """)
+                .when()
+                .pathParam("orderId", newOrderId)
+                .patch(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_NO_CONTENT);
+
+    }
+
+    @Test(groups = {"orders"})
+    public void deleteOrder(){
+        String endpoint = "/orders/{orderId}";
+        String newOrderId = getNewOrderId();
+        given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .auth()
+                .oauth2(authenticationToken)
+                .when()
+                .pathParam("orderId",newOrderId)
+                .delete(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_NO_CONTENT);    }
+
+    public String getNewOrderId(){
+        String endpoint = "/orders";
+        Response response = given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .auth()
+                .oauth2(authenticationToken)
+                .body("""
+                        {
+                         "toolId": 4643,
+                         "customerName": "TestUser"
+                        }
+                        """)
+                .when()
+                .post(endpoint)
+                .then()
+                .log().all()
+                .assertThat()
+                .statusCode(HttpStatus.SC_CREATED)
+                .extract().response();
+        return response.jsonPath().getString("orderId");
+    }
+
+    public String getAccessToken(){
+        String endpoint = "/api-clients";
+        String body = "{\n" +
+                "   \"clientName\": " + GeneratorUtils.generateName() + ",\n" +
+                "   \"clientEmail\": " + GeneratorUtils.generateEmail() + "\n" +
+                "}";
+        Response response = given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .log().all()
+                .accept(ContentType.JSON)
+                .body(body)
+                .post(endpoint)
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_CREATED)
+                .extract()
+                .response();
+        return response.jsonPath().get("accessToken");
+    }
 }
