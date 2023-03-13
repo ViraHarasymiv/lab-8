@@ -9,24 +9,9 @@ import simpleToolRentalAPI.rest.model.Order;
 import simpleToolRentalAPI.utils.Endpoint;
 import simpleToolRentalAPI.utils.PropertyLoader;
 
-public class ToolRentalAPI extends AbstractApi{
+import java.util.List;
 
-    /**
-     Get the successful status of the API
-     * @Vira_Harasymiv
-     */
-    @Step
-    public Response getStatusSuccessful(){
-        Response res = getClient()
-                .when()
-                .get(Endpoint.STATUS_URI)
-                .then()
-                .log().all()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-        return res;
-    }
+public class ToolRentalAPI extends AbstractApi{
 
     /**
      Get the status of the API
@@ -38,7 +23,6 @@ public class ToolRentalAPI extends AbstractApi{
                 .when()
                 .get(Endpoint.STATUS_URI)
                 .then()
-                .log().all()
                 .extract().response();
         return res;
     }
@@ -52,58 +36,36 @@ public class ToolRentalAPI extends AbstractApi{
         Response res = getClient()
                 .get(Endpoint.TOOLS_URI)
                 .then()
-                .log().all()
                 .extract().response();
         return res;
     }
 
     /**
-     Get all tools successful
+     Get all ids of tools
      * @Vira_Harasymiv
      */
     @Step
-    public Response getAllToolsSuccessful(){
+    public List<Object> getIdsOfAllTools(){
         Response res = getClient()
                 .get(Endpoint.TOOLS_URI)
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .extract().response();
-        return res;
+        return res.jsonPath().getList("id");
     }
 
     /**
-     Get tools by the category successful
+     Get tools by the category
      * @Vira_Harasymiv
      */
     @Step
-    public Response getToolsByCategorySuccessful(String category){
+    public Response getToolsByCategory(String category){
         Response res = getClient()
                 .queryParam("category",category)
                 .when()
                 .get(Endpoint.TOOLS_URI)
                 .then()
-                .log().all()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-        return res;
-    }
-
-    /**
-     Get tools by the number of results successful.
-     Must be number between 1 and 20. By default, only 20 tools will be displayed
-     * @Vira_Harasymiv
-     */
-    @Step
-    public Response getToolsByNumberOfResultsSuccessful(int value){
-        Response res = getClient()
-                .queryParam("results",value)
-                .when()
-                .get(Endpoint.TOOLS_URI)
-                .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
                 .extract().response();
         return res;
     }
@@ -120,7 +82,6 @@ public class ToolRentalAPI extends AbstractApi{
                 .when()
                 .get(Endpoint.TOOLS_URI)
                 .then()
-                .log().all()
                 .extract().response();
         return res;
     }
@@ -130,12 +91,11 @@ public class ToolRentalAPI extends AbstractApi{
      * @Vira_Harasymiv
      */
     @Step
-    public Response getSingleTool(int id){
+    public Response getSingleTool(Object id){
         Response res = getClient()
                 .pathParam("id",id)
                 .get(Endpoint.TOOLS_ID)
                 .then()
-                .log().all()
                 .extract().response();
         return res;
     }
@@ -170,17 +130,16 @@ public class ToolRentalAPI extends AbstractApi{
                 .when()
                 .get(Endpoint.ORDER)
                 .then()
-                .log().all()
                 .extract().response();
         return res;
     }
 
     /**
-     Create a new order successful
+     Get the created order's id
      * @Vira_Harasymiv
      */
     @Step
-    public Response addOrderSuccessful(String token, Order order){
+    public String getNewOrderId(String token, Order order){
         Response res = getClient()
                 .auth()
                 .oauth2(token)
@@ -192,27 +151,7 @@ public class ToolRentalAPI extends AbstractApi{
                 .statusCode(HttpStatus.SC_CREATED)
                 .extract()
                 .response();
-        return res;
-    }
-
-    /**
-     Get a single order by id successful
-     * @Vira_Harasymiv
-     */
-    @Step
-    public Response getOrderByIdSuccessful(String token, String orderId){
-        Response res = getClient()
-                .auth()
-                .oauth2(token)
-                .when()
-                .pathParam("orderId", orderId)
-                .get(Endpoint.ORDER_ID)
-                .then()
-                .log().all()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-        return res;
+        return res.jsonPath().getString("orderId");
     }
 
     /**
@@ -228,8 +167,6 @@ public class ToolRentalAPI extends AbstractApi{
                 .pathParam("orderId", orderId)
                 .get(Endpoint.ORDER_ID)
                 .then()
-                .log().all()
-                .assertThat()
                 .extract().response();
         return res;
     }
@@ -248,7 +185,6 @@ public class ToolRentalAPI extends AbstractApi{
                 .pathParam("orderId", orderId)
                 .patch(Endpoint.ORDER_ID)
                 .then()
-                .log().all()
                 .extract().response();
         return res;
     }
