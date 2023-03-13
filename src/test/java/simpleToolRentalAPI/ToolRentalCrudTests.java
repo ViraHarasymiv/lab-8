@@ -1,10 +1,8 @@
 package simpleToolRentalAPI;
 
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 import simpleToolRentalAPI.entities.Client;
 import simpleToolRentalAPI.entities.Order;
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.everyItem;
 
 public class ToolRentalCrudTests {
     String baseUrl = "https://simple-tool-rental-api.glitch.me";
@@ -57,7 +55,7 @@ public class ToolRentalCrudTests {
     public void checkGetToolsByCategory(Map<String, String> testData) {
         String endpoint = "/tools";
         String category = testData.get("category");
-        Response response = given()
+        given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
                 .log().all()
@@ -69,16 +67,16 @@ public class ToolRentalCrudTests {
                 .log().all()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-      Assertions.assertThat(response.body().jsonPath().getString("category")
-              .equals(category));
+                .body("category", everyItem(equalTo(category)));
+      //Assertions.assertThat(response.body().jsonPath().getString("category")
+        //      .equals(category));
     }
 
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
     public void positiveCheckResultsCount(Map<String, String> testData) {
         int value = Integer.parseInt(testData.get("value"));
         String endpoint = "/tools";
-        Response response = given()
+        given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
                 .log().all()
@@ -90,9 +88,9 @@ public class ToolRentalCrudTests {
                 .log().all()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-        List<JsonPath> results = response.jsonPath().getList("category");
-        assertThat(results.size(), equalTo(value));
+                .body("category.size()", equalTo(value));
+        //List<JsonPath> results = response.jsonPath().getList("category");
+        //assertThat(results.size(), equalTo(value));
     }
 
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
