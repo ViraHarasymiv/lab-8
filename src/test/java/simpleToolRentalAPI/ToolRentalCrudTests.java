@@ -189,7 +189,6 @@ public class ToolRentalCrudTests {
         String actualId = response.jsonPath().get("id");
         Assertions.assertThat(newOrderId
                 .equals(actualId));
-
     }
 
     @Test(groups = {"orders"})
