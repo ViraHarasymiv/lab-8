@@ -70,8 +70,8 @@ public class ToolRentalCrudTests {
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .extract().response();
-       Assertions.assertThat(response.body().jsonPath().getString("category")
-               .equals(category));
+      Assertions.assertThat(response.body().jsonPath().getString("category")
+              .equals(category));
     }
 
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
