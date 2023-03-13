@@ -136,6 +136,6 @@ public class ToolRentalCrudTests {
                 .then()
                 .assertThat()
                 .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST);
+                .statusCode(HttpStatus.SC_NOT_FOUND);
     }
 }
