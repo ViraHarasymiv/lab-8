@@ -1,4 +1,4 @@
-# Example for the lab 13. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example for the lab 12. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 =========================================================================
 
@@ -20,25 +20,3 @@ git clone https://github.com/ViraHarasymiv/rest-assured-framework.git
 ```shell
 mvn clean test
 ```
-- Generate the report:
-```shell
-mvn allure:serve
-```
-- Run test:
-```shell
-mvn clean test -DsuiteXmlFile=${xml} -Dgroups=${} -Denv=${env}
-```
-Examples:
-- Run the status group's tests on prod environment:
-```shell
-mvn clean test -Dgroups=status -Denv=prod
-```
-- Run the tools group's tests:
-```shell
-mvn clean test -Dgroups=tools
-```
-- Run the orders group's tests:
-```shell
-mvn clean test -Dgroups=orders
-```
-
