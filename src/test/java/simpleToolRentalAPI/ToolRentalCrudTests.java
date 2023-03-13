@@ -33,25 +33,8 @@ public class ToolRentalCrudTests {
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(HttpStatus.SC_OK);
-    }
-
-    @Test(groups = {"status"})
-    public void checkResponseOfGetStatus() {
-        String endpoint = "/status";
-        Response response = given()
-                .baseUri(baseUrl)
-                .contentType(ContentType.JSON)
-                .log().all()
-                .accept(ContentType.JSON)
-                .when()
-                .get(endpoint)
-                .then()
-                .log().all()
-                .extract().response();
-        Assertions.assertThat(response.body().jsonPath().getString("status"))
-                .as("Status must be equal to <UP>")
-                .isEqualTo("UP");
+                .statusCode(HttpStatus.SC_OK)
+                .body("status",equalTo("UP"));
     }
 
     @Test(groups = {"tools"})
@@ -73,7 +56,7 @@ public class ToolRentalCrudTests {
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
     public void checkGetToolsByCategory(Map<String, String> testData) {
         String endpoint = "/tools";
-                String category = testData.get("category");
+        String category = testData.get("category");
         Response response = given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
@@ -87,8 +70,8 @@ public class ToolRentalCrudTests {
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .extract().response();
-        Assertions.assertThat(response.body().jsonPath().getString("category")
-                .equals(category));
+       Assertions.assertThat(response.body().jsonPath().getString("category")
+               .equals(category));
     }
 
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
@@ -170,7 +153,7 @@ public class ToolRentalCrudTests {
     public void getOrderById(){
         String endpoint = "/orders/{orderId}";
         String newOrderId = getNewOrderId();
-        Response response = given()
+        given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
                 .log().all()
@@ -184,10 +167,7 @@ public class ToolRentalCrudTests {
                 .log().all()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-        String actualId = response.jsonPath().get("id");
-        Assertions.assertThat(newOrderId
-                .equals(actualId));
+                .body("id",equalTo(newOrderId));
     }
 
     @Test(groups = {"orders"})
@@ -229,7 +209,6 @@ public class ToolRentalCrudTests {
                 .log().all()
                 .assertThat()
                 .statusCode(HttpStatus.SC_NO_CONTENT);
-
     }
 
     @Test(groups = {"orders"})
