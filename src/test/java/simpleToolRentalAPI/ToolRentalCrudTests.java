@@ -68,8 +68,6 @@ public class ToolRentalCrudTests {
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("category", everyItem(equalTo(category)));
-      //Assertions.assertThat(response.body().jsonPath().getString("category")
-        //      .equals(category));
     }
 
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
@@ -89,8 +87,6 @@ public class ToolRentalCrudTests {
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("category.size()", equalTo(value));
-        //List<JsonPath> results = response.jsonPath().getList("category");
-        //assertThat(results.size(), equalTo(value));
     }
 
     @Test(groups = {"tools"}, dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
@@ -184,7 +180,6 @@ public class ToolRentalCrudTests {
                 .log().all()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK);
-
     }
 
     @Test(groups = {"orders"})

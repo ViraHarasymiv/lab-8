@@ -14,7 +14,6 @@
         <testng>7.7.0</testng>
         <opencsv>5.7.1</opencsv>
         <rest-assured-version>5.3.0</rest-assured-version>
-        <assertj-core.version>3.24.2</assertj-core.version>
         <jackson-databind>2.14.1</jackson-databind>
     </properties>
     <dependencies>
@@ -32,11 +31,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
