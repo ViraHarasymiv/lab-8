@@ -1,4 +1,4 @@
-# Example for the lab 12. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example for the lab 13. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 =========================================================================
 
