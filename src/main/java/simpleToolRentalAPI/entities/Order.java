@@ -11,6 +11,11 @@ public class Order {
         this.comment = comment;
     }
 
+    public Order(String customerName, String comment) {
+        this.customerName = customerName;
+        this.comment = comment;
+    }
+
     public Order() {
     }
 

@@ -7,7 +7,6 @@ import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 import simpleToolRentalAPI.entities.Client;
-import simpleToolRentalAPI.entities.ModifiedOrder;
 import simpleToolRentalAPI.entities.Order;
 import simpleToolRentalAPI.utils.CsvDataProviders;
 import simpleToolRentalAPI.utils.GeneratorUtils;
@@ -214,7 +213,7 @@ public class ToolRentalCrudTests {
     public void updateOrder() {
         String endpoint = "/orders/{orderId}";
         String newOrderId = getNewOrderId();
-        ModifiedOrder modifiedOrder = new ModifiedOrder(GeneratorUtils.generateName(), GeneratorUtils.generateComment());
+        Order updatedOrder = new Order(GeneratorUtils.generateName(), GeneratorUtils.generateComment());
         given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
@@ -222,7 +221,7 @@ public class ToolRentalCrudTests {
                 .accept(ContentType.JSON)
                 .auth()
                 .oauth2(authenticationToken)
-                .body(modifiedOrder)
+                .body(updatedOrder)
                 .when()
                 .pathParam("orderId", newOrderId)
                 .patch(endpoint)
