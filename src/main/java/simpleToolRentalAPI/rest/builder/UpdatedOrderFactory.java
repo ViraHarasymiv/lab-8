@@ -1,11 +1,11 @@
 package simpleToolRentalAPI.rest.builder;
 
-import simpleToolRentalAPI.rest.model.ModifiedOrder;
+import simpleToolRentalAPI.rest.model.Order;
 import simpleToolRentalAPI.utils.GeneratorUtils;
 
-public class ModifiedOrderFactory {
-    public static ModifiedOrder modifiedOrder() {
-        return ModifiedOrder.builder()
+public class UpdatedOrderFactory {
+    public static Order modifiedOrder() {
+        return Order.builder()
                 .customerName(GeneratorUtils.generateName())
                 .comment(GeneratorUtils.generateComment())
                 .build();

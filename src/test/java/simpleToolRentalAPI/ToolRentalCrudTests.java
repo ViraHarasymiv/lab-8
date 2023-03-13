@@ -9,7 +9,7 @@ import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 import simpleToolRentalAPI.rest.ToolRentalAPI;
 import simpleToolRentalAPI.rest.builder.ClientFactory;
-import simpleToolRentalAPI.rest.builder.ModifiedOrderFactory;
+import simpleToolRentalAPI.rest.builder.UpdatedOrderFactory;
 import simpleToolRentalAPI.rest.builder.OrderFactory;
 import simpleToolRentalAPI.utils.CsvDataProviders;
 
@@ -19,7 +19,7 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ToolRentalTests {
+public class ToolRentalCrudTests {
     ToolRentalAPI api = new ToolRentalAPI();
     protected String authenticationToken = api.getAccessToken(ClientFactory.newDefaultClient());
 
@@ -139,7 +139,7 @@ public class ToolRentalTests {
     public void updateOrder() {
         Response newOrder = api.addOrderSuccessful(authenticationToken,OrderFactory.newDefaultOrder());
         String newOrderId = newOrder.jsonPath().getString("orderId");
-        Response response = api.modifyOrder(authenticationToken, newOrderId, ModifiedOrderFactory.modifiedOrder());
+        Response response = api.modifyOrder(authenticationToken, newOrderId, UpdatedOrderFactory.modifiedOrder());
         Assertions.assertThat(response.statusCode())
                 .as("Status must be equal to 204")
                 .isEqualTo(HttpStatus.SC_NO_CONTENT);

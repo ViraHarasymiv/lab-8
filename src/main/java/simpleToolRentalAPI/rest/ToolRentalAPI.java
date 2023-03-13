@@ -5,7 +5,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import simpleToolRentalAPI.rest.model.Client;
-import simpleToolRentalAPI.rest.model.ModifiedOrder;
 import simpleToolRentalAPI.rest.model.Order;
 import simpleToolRentalAPI.utils.Endpoint;
 import simpleToolRentalAPI.utils.PropertyLoader;
@@ -240,7 +239,7 @@ public class ToolRentalAPI extends AbstractApi{
      * @Vira_Harasymiv
      */
     @Step
-    public Response modifyOrder(String token, String orderId, ModifiedOrder modifiedOrder){
+    public Response modifyOrder(String token, String orderId, Order modifiedOrder){
         Response res = getClient()
                 .auth()
                 .oauth2(token)
