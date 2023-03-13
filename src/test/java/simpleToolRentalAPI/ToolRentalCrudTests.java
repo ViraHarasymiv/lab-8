@@ -6,12 +6,13 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
+import simpleToolRentalAPI.entities.Client;
+import simpleToolRentalAPI.entities.ModifiedOrder;
+import simpleToolRentalAPI.entities.Order;
 import simpleToolRentalAPI.utils.CsvDataProviders;
 import simpleToolRentalAPI.utils.GeneratorUtils;
-
 import java.util.List;
 import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -132,7 +133,6 @@ public class ToolRentalCrudTests {
 
     @Test(groups = {"tools"})
     public void checkGettingSingleToolById(){
-        String endpoint = "/tools";
         String tools_id = "/tools/{id}";
         Response getAllTools = getAllToolsSuccessful();
         List<Object> id = getAllTools.jsonPath().getList("id");
@@ -215,6 +215,7 @@ public class ToolRentalCrudTests {
     public void updateOrder() {
         String endpoint = "/orders/{orderId}";
         String newOrderId = getNewOrderId();
+        ModifiedOrder modifiedOrder = new ModifiedOrder(GeneratorUtils.generateName(), GeneratorUtils.generateComment());
         given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
@@ -222,11 +223,7 @@ public class ToolRentalCrudTests {
                 .accept(ContentType.JSON)
                 .auth()
                 .oauth2(authenticationToken)
-                .body("""
-                        {
-                         "customerName": "User"
-                        }
-                        """)
+                .body(modifiedOrder)
                 .when()
                 .pathParam("orderId", newOrderId)
                 .patch(endpoint)
@@ -258,6 +255,7 @@ public class ToolRentalCrudTests {
 
     public String getNewOrderId(){
         String endpoint = "/orders";
+        Order newOrder = new Order(4643, GeneratorUtils.generateName(), GeneratorUtils.generateComment());
         Response response = given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
@@ -265,12 +263,7 @@ public class ToolRentalCrudTests {
                 .accept(ContentType.JSON)
                 .auth()
                 .oauth2(authenticationToken)
-                .body("""
-                        {
-                         "toolId": 4643,
-                         "customerName": "TestUser"
-                        }
-                        """)
+                .body(newOrder)
                 .when()
                 .post(endpoint)
                 .then()
@@ -283,16 +276,13 @@ public class ToolRentalCrudTests {
 
     public String getAccessToken(){
         String endpoint = "/api-clients";
-        String body = "{\n" +
-                "   \"clientName\": " + GeneratorUtils.generateName() + ",\n" +
-                "   \"clientEmail\": " + GeneratorUtils.generateEmail() + "\n" +
-                "}";
+        Client newClient = new Client(GeneratorUtils.generateName(),GeneratorUtils.generateEmail());
         Response response = given()
                 .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
                 .log().all()
                 .accept(ContentType.JSON)
-                .body(body)
+                .body(newClient)
                 .post(endpoint)
                 .then()
                 .log().all()
