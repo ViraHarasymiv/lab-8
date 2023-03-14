@@ -7,8 +7,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -20,7 +22,10 @@ public class DefinitionSteps {
     @Before
     public void testsSetUp() {
         chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+        chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
     }
 
