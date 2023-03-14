@@ -37,7 +37,10 @@ public class BrowserDriverFactory {
             default:
                 log.info("Do not know how to start: " + browser + ", starting chrome.");
                 WebDriverManager.chromedriver().setup();
-                driver.set(new ChromeDriver());
+                chromeOptions = new ChromeOptions();
+                chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+                chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+                driver.set(new ChromeDriver(chromeOptions));
                 break;
         }
         return driver.get();
