@@ -41,7 +41,6 @@ java -jar selenium-server.jar node --detect-drivers true
 ```
 **2. Run test case in Selenium Grid 4.0**
 - GridFactory class is used to initialize RemoteWebDriver in Selenium Grid 4.0
-- "Parameter" annotation is used in BaseTest class in order to select the environment (local or grid) and the browser type.
 - positiveCreateAccountTestSuiteOnGrid.xml is used to run the tests in Selenium Grid. You can also use the next command:
 ```shell
 mvn clean test

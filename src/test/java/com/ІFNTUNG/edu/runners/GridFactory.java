@@ -19,7 +19,6 @@ public class GridFactory {
         this.log = log;
     }
 
-
     public WebDriver createDriver() {
         log.info("Connecting to the node with: " + browser);
         DesiredCapabilities capabilities = new DesiredCapabilities();
