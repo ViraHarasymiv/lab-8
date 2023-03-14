@@ -27,6 +27,7 @@ public class BrowserDriverFactory {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+                chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
                 driver.set(new ChromeDriver(chromeOptions));
                 break;
             case "firefox":
