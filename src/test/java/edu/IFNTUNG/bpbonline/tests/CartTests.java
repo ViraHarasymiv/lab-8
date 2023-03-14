@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,7 +25,9 @@ public class CartTests {
         switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+                driver = new ChromeDriver(chromeOptions);
                 break;
 
             case "firefox":
@@ -35,7 +38,9 @@ public class CartTests {
             default:
                 System.out.println("Do not know how to start: " + browser + ", starting chrome.");
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+                driver = new ChromeDriver(chromeOptions);
                 break;
         }
         driver.manage().window().maximize();
