@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="PositiveCreateAccountTest" verbose="1">
+    <parameter name="environment" value="local" />
+
+    <test name="PositiveCreateAccountTest-chrome">
+        <classes>
+            <class name="com.ІFNTUNG.edu.createAccounTests.PositiveCreateAccountTest"/>
+        </classes>
+    </test>
+
+</suite>

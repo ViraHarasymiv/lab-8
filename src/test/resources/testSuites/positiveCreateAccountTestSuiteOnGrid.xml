@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="PositiveCreateAccountTestSuite">
+    <parameter name="environment" value="grid" />
+    <parameter name="browser" value="chrome"></parameter>
+    <test name="PositiveCreateAccountTest-chrome">
+        <classes>
+            <class name="com.ІFNTUNG.edu.createAccounTests.PositiveCreateAccountTest"/>
+        </classes>
+    </test>
+
+    <test name="PositiveCreateAccountTest-firefox">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.ІFNTUNG.edu.createAccounTests.PositiveCreateAccountTest"/>
+        </classes>
+    </test>
+</suite>

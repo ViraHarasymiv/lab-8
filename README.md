@@ -1,44 +1,49 @@
-# Example for the lab 13. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example for the lab 14. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 =========================================================================
 
-# Rest Assured Simple Tool Rental API
+# Page Object Model & TestNG & Selenium Grid 4.0
+The project is made by using Page Object Model, Page Factory class, TestNG framework and Selenium Grid 4.0.
 
-[Simple Tool Rental API](https://github.com/vdespa/quick-introduction-to-postman/blob/main/simple-tool-rental-api.md) testing using REST Assured
+The target website is [BPB PUBLICATIONS](http://practice.bpbonline.com/index.php).
 
-API documentation was taken from the [Quick Introduction to Postman and API Testing for Beginners](https://www.udemy.com/course/postman-crash-course-for-beginners-learn-rest-api-testing/) course
+Automated tests: positive test case for the creating new account
 
-**Tool Rental API.postman_collection.json** or [link](https://elements.getpostman.com/redirect?entityId=23008621-ab564d95-b36a-474e-8f64-ccf834bf6213&entityType=collection) can be used for running tests in Postman
+## Run tests in Selenium Grid 4.0
 
-## Executing the Tests
+**1. Configure Selenium Grid 4.0**
 
-- Clone the repository:
+- Download selenium-server jar-file ([Selenium Downloads](https://www.selenium.dev/downloads/))
+- Rename the jar-file in "selenium-server" on order to make easier to run the cmd commands
+- Run the next command in cmd (where the "selenium-server" jar-file is saved) in order to run EVENT BUS. It is the communication channel between all the other components.
 ```shell
-git clone https://github.com/ViraHarasymiv/rest-assured-framework.git
+java -jar selenium-server.jar event-bus
 ```
-- Run all tests:
+- Run the next command in the separate cmd window (where the "selenium-server" jar-file is saved) in order to run SESSION MAP. It maps the relationship between a given node and the session in which it’s running.
+```shell
+java -jar selenium-server.jar sessions
+```
+- Run the next command in the separate cmd window (where the "selenium-server" jar-file is saved) in order to run NEW SESSION QUEUE. It’s the queue where requests for new sessions wait until they get picked by the distributor.
+```shell
+java -jar selenium-server.jar sessionqueue
+```
+- Run the next command in the separate cmd window (where the "selenium-server" jar-file is saved) in order to run DISTRIBUTOR. It registers and manages the nodes. It also queries the new session queue for requests for new sessions, then finds a suitable node for it.
+```shell
+java -jar selenium-server.jar distributor --sessions http://localhost:5556 --sessionqueue http://localhost:5559 --bind-bus false
+```
+- Run the next command in the separate cmd window (where the "selenium-server" jar-file is saved) in order to run ROUTER. It is the component that receives the requests and dispatches them to the appropriate place: requests for an existing session are sent to the session map, where the id for the node is retrieved and then the request is sent to the node; requests for a new session are sent to the new session queue, where they wait to be picked up
+```shell
+java -jar selenium-server.jar router --sessions http://localhost:5556 --distributor http://localhost:5553 --sessionqueue http://localhost:5559
+```
+- Run the next command in the separate cmd window (where the "selenium-server" jar-file is saved) in order to run NODE. Nodes are the “agents” that run on the given machines. Six separate cmd windows are opened: Event Bus, Session Map, New Session Queue, Distributor, Router and Node.
+```shell
+java -jar selenium-server.jar node --detect-drivers true
+```
+**2. Run test case in Selenium Grid 4.0**
+- GridFactory class is used to initialize RemoteWebDriver in Selenium Grid 4.0
+- "Parameter" annotation is used in BaseTest class in order to select the environment (local or grid) and the browser type.
+- positiveCreateAccountTestSuiteOnGrid.xml is used to run the tests in Selenium Grid. You can also use the next command:
 ```shell
 mvn clean test
-```
-- Generate the report:
-```shell
-mvn allure:serve
-```
-- Run test:
-```shell
-mvn clean test -DsuiteXmlFile=${xml} -Dgroups=${} 
-```
-Examples:
-- Run the status group's tests:
-```shell
-mvn clean test -Dgroups=status 
-```
-- Run the tools group's tests:
-```shell
-mvn clean test -Dgroups=tools
-```
-- Run the orders group's tests:
-```shell
-mvn clean test -Dgroups=orders
 ```
 
