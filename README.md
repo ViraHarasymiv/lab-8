@@ -26,12 +26,12 @@ mvn allure:serve
 ```
 - Run test:
 ```shell
-mvn clean test -DsuiteXmlFile=${xml} -Dgroups=${} -Denv=${env}
+mvn clean test -DsuiteXmlFile=${xml} -Dgroups=${} 
 ```
 Examples:
-- Run the status group's tests on prod environment:
+- Run the status group's tests:
 ```shell
-mvn clean test -Dgroups=status -Denv=prod
+mvn clean test -Dgroups=status 
 ```
 - Run the tools group's tests:
 ```shell

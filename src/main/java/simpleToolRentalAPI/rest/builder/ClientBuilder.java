@@ -5,7 +5,7 @@ import simpleToolRentalAPI.rest.model.Client;
 import static simpleToolRentalAPI.utils.GeneratorUtils.generateEmail;
 import static simpleToolRentalAPI.utils.GeneratorUtils.generateName;
 
-public class ClientFactory {
+public class ClientBuilder {
     public static Client newDefaultClient(){
         return Client.builder()
                 .clientName(generateName())

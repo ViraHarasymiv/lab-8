@@ -4,9 +4,9 @@ import io.qameta.allure.Link;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import simpleToolRentalAPI.rest.ToolRentalAPI;
-import simpleToolRentalAPI.rest.builder.ClientFactory;
-import simpleToolRentalAPI.rest.builder.UpdatedOrderFactory;
-import simpleToolRentalAPI.rest.builder.OrderFactory;
+import simpleToolRentalAPI.rest.builder.ClientBuilder;
+import simpleToolRentalAPI.rest.builder.UpdatedOrderBuilder;
+import simpleToolRentalAPI.rest.builder.OrderBuilder;
 import simpleToolRentalAPI.utils.CsvDataProviders;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import static org.hamcrest.CoreMatchers.everyItem;
 
 public class ToolRentalCrudTests {
     ToolRentalAPI api = new ToolRentalAPI();
-    protected String authenticationToken = api.getAccessToken(ClientFactory.newDefaultClient());
+    protected String authenticationToken = api.getAccessToken(ClientBuilder.newDefaultClient());
 
     @Test(groups = {"status"})
     @Link(name = "Link to the API Status", url =
@@ -93,7 +93,7 @@ public class ToolRentalCrudTests {
     @Link(name = "Link to the Get a single order", url =
             "https://github.com/vdespa/quick-introduction-to-postman/blob/main/simple-tool-rental-api.md#Get-a-single-order")
     public void getOrderById() {
-        String newOrderId = api.getNewOrderId(authenticationToken, OrderFactory.newDefaultOrder());
+        String newOrderId = api.getNewOrderId(authenticationToken, OrderBuilder.newDefaultOrder());
         api.getOrderById(authenticationToken, newOrderId)
                 .then()
                 .assertThat()
@@ -118,8 +118,8 @@ public class ToolRentalCrudTests {
     @Link(name = "Update an order", url =
             "https://github.com/vdespa/quick-introduction-to-postman/blob/main/simple-tool-rental-api.md#Update-an-order")
     public void updateOrder() {
-        String newOrderId = api.getNewOrderId(authenticationToken, OrderFactory.newDefaultOrder());
-        api.modifyOrder(authenticationToken, newOrderId, UpdatedOrderFactory.modifiedOrder())
+        String newOrderId = api.getNewOrderId(authenticationToken, OrderBuilder.newDefaultOrder());
+        api.modifyOrder(authenticationToken, newOrderId, UpdatedOrderBuilder.modifiedOrder())
                 .then()
                 .assertThat()
                 .log().all()
@@ -130,7 +130,7 @@ public class ToolRentalCrudTests {
     @Link(name = "Delete an order", url =
             "https://github.com/vdespa/quick-introduction-to-postman/blob/main/simple-tool-rental-api.md#Delete-an-order")
     public void checkIfOrderIsDeleted() {
-        String newOrderId = api.getNewOrderId(authenticationToken, OrderFactory.newDefaultOrder());
+        String newOrderId = api.getNewOrderId(authenticationToken, OrderBuilder.newDefaultOrder());
         api.deleteOrderSuccessful(authenticationToken, newOrderId);
         api.getOrderById(authenticationToken, newOrderId)
                 .then()

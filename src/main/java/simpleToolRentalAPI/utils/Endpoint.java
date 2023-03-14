@@ -1,6 +1,7 @@
 package simpleToolRentalAPI.utils;
 
 public class Endpoint {
+    public static final String BASE_URL = "https://simple-tool-rental-api.glitch.me";
     public static final String STATUS_URI = "/status";
     public static final String TOOLS_URI = "/tools";
     public static final String TOOLS_ID = "/tools/{id}";

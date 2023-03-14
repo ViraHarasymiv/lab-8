@@ -7,7 +7,6 @@ import org.apache.http.HttpStatus;
 import simpleToolRentalAPI.rest.model.Client;
 import simpleToolRentalAPI.rest.model.Order;
 import simpleToolRentalAPI.utils.Endpoint;
-import simpleToolRentalAPI.utils.PropertyLoader;
 
 import java.util.List;
 
@@ -209,6 +208,6 @@ public class ToolRentalAPI extends AbstractApi{
     }
     @Override
     protected RequestSpecification getClient() {
-        return RestClientFactory.getClient(PropertyLoader.getProperty("baseUrl"));
+        return RestClientFactory.getClient(Endpoint.BASE_URL);
     }
 }
