@@ -33,13 +33,6 @@ public class BasePage {
     }
 
     /**
-     * Wait for given number of seconds for the attribute value in the element
-     */
-    protected void waitForAttributeToBeInElement(WebElement element, String attribute, String value) {
-        wait.until(ExpectedConditions.attributeToBe(element,attribute,value));
-    }
-
-    /**
      * Wait for given number of seconds for the text becomes visible in the element
      */
     protected void waitForTextToBePresentInElement(WebElement element, String text) {
@@ -55,20 +48,19 @@ public class BasePage {
     }
 
     /**
+     * Open page with given URL
+     */
+    protected void openUrl(String url) {
+        driver.get(url);
+    }
+
+    /**
      * Type given text into element
      */
     protected void type(String text, WebElement element) {
         waitForVisibilityOfElement(element);
         element.clear();
         element.sendKeys(text);
-    }
-
-    /**
-     * Get the item's price
-     */
-    protected String getItemPrice(WebElement element) {
-        waitForVisibilityOfElement(element);
-        return element.getText().replaceAll("[^0-9.]", "");
     }
 
     /**
@@ -92,13 +84,5 @@ public class BasePage {
      */
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
-    }
-
-    /**
-     * Wait for alert present and then switch to it
-     */
-    protected Alert switchToAlert() {
-        wait.until(ExpectedConditions.alertIsPresent());
-        return driver.switchTo().alert();
     }
 }

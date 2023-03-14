@@ -37,6 +37,7 @@ public class PositiveCreateAccountTest extends BaseTest {
 
         log.info("Starting Create Account Test with valid data #" + number);
         AccountSuccessPage accountSuccessPage = new HomePage(driver, log)
+                .openPage()
                 .clickOnMyAccountMenu()
                 .clickOnContinueButton()
                 .clickOnMaleRadioButton()
