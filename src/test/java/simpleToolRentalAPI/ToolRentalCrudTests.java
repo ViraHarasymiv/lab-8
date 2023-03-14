@@ -22,7 +22,7 @@ public class ToolRentalCrudTests {
     @Test(groups = {"status"})
     @Link(name = "Link to the API Status", url =
             "https://github.com/vdespa/quick-introduction-to-postman/blob/main/simple-tool-rental-api.md#Status")
-    public void checkResponseOfGetStatus() {
+    public void checkGetStatus() {
         api.getStatus()
                 .then()
                 .log().all()
