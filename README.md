@@ -1,6 +1,8 @@
-# Example for the lab 15. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-15. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 =========================================================================
+
+## LAB-15. GUI testing using Sauce Labs
 
 #  Running tests on SauceLabs
 
