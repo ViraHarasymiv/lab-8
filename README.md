@@ -1,6 +1,9 @@
-# Example for the lab 7. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-7. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
-## Documentation:
+=========================================================================
+
+## LAB-7. Introduction to Selenium WebDriver
+### Documentation:
 
 1. [Selenium WebDriver Documentation](https://www.selenium.dev/documentation/webdriver/);
 
