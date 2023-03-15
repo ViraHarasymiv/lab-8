@@ -1,4 +1,9 @@
-# Example for the lab 10. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-10. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+
+=========================================================================
+
+## LAB-10. Writing automated test scripts using PageFactory class and Allure Framework
+
 
 The project is made by using Page Object Model, Page Factory class, TestNG and Allure frameworks. Log4j is used for logging events. All logs are saved in the directory named logs (target/logs/appTest.log).
 
