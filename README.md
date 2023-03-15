@@ -1,4 +1,9 @@
-# Example for the lab 9. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-9. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+
+=========================================================================
+
+## LAB-9. Writing automated test scripts using design pattern Page Object
+
 
 The project is made by using Page Object Model and TestNG framework. Log4j is used for logging events. All logs are saved in the directory named logs (target/logs/appTest.log).
 
