@@ -1,8 +1,9 @@
-# Example for the lab 14. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-14. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 =========================================================================
 
-# Page Object Model & TestNG & Selenium Grid 4.0
+## LAB-14. GUI testing using Selenium Grid 4.0
+
 The project is made by using Page Object Model, Page Factory class, TestNG framework and Selenium Grid 4.0.
 
 The target website is [BPB PUBLICATIONS](http://practice.bpbonline.com/index.php).
