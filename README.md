@@ -1,8 +1,11 @@
-# Example for the lab 13. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-13. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
 
 =========================================================================
 
-# Rest Assured Simple Tool Rental API
+## LAB-13. API testing using design pattern Builder and REST-assured
+
+
+### Rest Assured Simple Tool Rental API
 
 [Simple Tool Rental API](https://github.com/vdespa/quick-introduction-to-postman/blob/main/simple-tool-rental-api.md) testing using REST Assured
 
