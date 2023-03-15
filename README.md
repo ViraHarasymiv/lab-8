@@ -1,4 +1,8 @@
-# Example for the lab 8. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+# Example of lab-8. Hardware and software testing. Ivano-Frankivsk National Technical University of Oil and Gas. Department of Computer Systems and Networks.
+
+=========================================================================
+
+## LAB-8. Introduction to TestNG. Writing first automated test scripts
 
 The target website is [BPBOnline](http://practice.bpbonline.com/index.php)
 
