@@ -21,9 +21,9 @@ Run commands
 ```shell
 git clone https://github.com/ViraHarasymiv/labs
 ```
-- Switch to the lab-10 branch:
+- Switch to the lab-11 branch:
 ```shell
-git checkout lab-10
+git checkout lab-11
 ```
 
 IDE Configuration
