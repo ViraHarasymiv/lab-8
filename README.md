@@ -2,7 +2,7 @@
 
 =========================================================================
 
-## LAB-13. API testing using design pattern Builder and REST-assured
+## LAB-13. API testing using design pattern Builder and Lombok
 
 
 ### Rest Assured Simple Tool Rental API
